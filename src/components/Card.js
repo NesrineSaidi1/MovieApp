@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Card = ({ el }) => {
   const [showText, setShowText] = useState(false);
@@ -10,7 +11,7 @@ const Card = ({ el }) => {
     >
       <img src={el.posterurl} alt="" />
       {showText && (
-        <div className="text-foug-image">
+        <div className="text-foug-image" style={{ zIndex: "999999999" }}>
           <h1>
             {el.rating}{" "}
             <svg
@@ -27,23 +28,34 @@ const Card = ({ el }) => {
           </h1>
 
           <h2 style={{ alignSelf: "center" }}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="40"
-              height="40"
-              fill="currentColor"
-              class="bi bi-play-circle"
-              viewBox="0 0 16 16"
+            <Link
+              to={`/trailers/${el.name}`}
+              style={{ textDecoration: "none", color: "white" }}
+              state={el}
             >
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="40"
+                height="40"
+                fill="currentColor"
+                class="bi bi-play-circle"
+                viewBox="0 0 16 16"
+              >
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+              </svg>
+            </Link>
           </h2>
+
           <h2>{el.name}</h2>
         </div>
       )}
       <div
-        style={{ justifyContent: "flex-end", backgroundColor: "transparent" }}
+        style={{
+          zIndex: 0,
+          justifyContent: "flex-end",
+          backgroundColor: "transparent",
+        }}
         className="text-foug-image"
       >
         <h2>{el.name}</h2>

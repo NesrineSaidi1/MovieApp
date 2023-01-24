@@ -104,6 +104,11 @@ const MovieList = ({ text, rate }) => {
   ]);
   return (
     <div>
+      <div className="cover-movie">
+        <video className="elmovie" src="cover.mp4" autoPlay muted loop />
+        <h3>Avatar</h3>
+        <button>Play</button>
+      </div>
       <Addmovie films={films} setfilms={setfilms} />
       <div className="movie-list">
         {films

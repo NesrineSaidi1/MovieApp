@@ -3,6 +3,7 @@ import { HiSearch } from "react-icons/hi";
 import ReactStars from "react-rating-stars-component";
 import "../styles/NavBarstyle.css";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function NavBar({ settext, setrate }) {
   const [toggle, setToggle] = useState(true);
@@ -12,8 +13,22 @@ function NavBar({ settext, setrate }) {
       <div className="nav" id={toggle ? "a" : "b"}>
         <div className="nav-options">
           <h1 id={toggle ? "" : "heading"}>NESFLIX</h1>
-          <span id={toggle ? "Movies" : "MoviesLight"}>Movies</span>
-          <span id={toggle ? "Movies" : "MoviesLight"}>Tv Shows</span>
+          <span id={toggle ? "" : "MoviesLight"}>
+            <Link style={{ color: "white" }} to="/">
+              Movies
+            </Link>
+          </span>
+
+          <span id={toggle ? "Movies" : "MoviesLight"}>
+            <Link style={{ color: "white" }} to="/about">
+              About
+            </Link>
+          </span>
+          <span id={toggle ? "Movies" : "MoviesLight"}>
+            <Link style={{ color: "white" }} to="/contact">
+              Contact
+            </Link>
+          </span>
         </div>
         <div>
           <ReactStars
@@ -37,12 +52,6 @@ function NavBar({ settext, setrate }) {
           </div>
         </div>
       </div>
-      <div className="cover-movie">
-        <video className="elmovie" src="cover.mp4" autoPlay muted loop />
-        <h3>Avatar</h3>
-        <button>Play</button>
-      </div>
-      <div className="movies-container"></div>
     </div>
   );
 }
